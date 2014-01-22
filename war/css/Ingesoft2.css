@@ -1,0 +1,259 @@
+/*            @media (max-width: 320px) {*/
+* {
+    -moz-box-sizing: border-box;
+}
+
+body{
+    font-size: 12px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-color: black;
+    color: white;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.glyphicon {
+    color: white;
+    opacity: 1;
+}
+aside,article,header,footer, menu{
+    display: block;
+}
+aside{
+    position: absolute;
+    top: 50px;
+    z-index: 800;
+
+    -webkit-transform: translateX(-230px);
+    transform: translateX(-230px);
+
+    width: 200px;
+    height: calc(100% - 50px);
+    padding-left: 15px;
+    background-color: rgb(34, 34, 34);
+
+    -webkit-transition:all 1.0s ease;
+    -moz-transition:all 1.0s ease;
+    -o-transition:all 1.0s ease;
+    transition:all 1.0s ease;
+} aside ul {
+    margin: 0px;
+    margin-left: -15px;
+    padding-left: 0px;
+    list-style: none outside none;
+    line-height: 20px;
+} aside li a{
+    height: 40px;
+    color: white;
+    display: block;
+    padding-top: 9px;
+    padding-left: 9px;
+    width: calc(100% + 25px);
+} aside a{
+    color: white;
+    text-decoration: none;
+} aside a:active,a:hover,a:visited{
+    text-decoration: none;
+    color: white;
+} aside a:active{
+    background-color: #00AACC;
+} aside .seleccionado a{
+    color: #00AACC;
+} aside .seleccionado a:active, aside .seleccionado .glyphicon{
+    color: white;
+} aside .seleccionado, aside .seleccionado .glyphicon{
+    background-color: rgba(0,0,0,0.7);
+    color: #00AACC;
+}
+article{
+    position: absolute;
+    top: 50px;
+    bottom: 50px;
+
+    width: 100%;
+    padding: 10px;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    -webkit-transition:all 1.0s ease-in-out;
+    /*-moz-transition:all 1.0s ease-in-out;
+    -o-transition:all 1.0s ease-in-out;*/
+    transition:all 1.0s ease-in-out;
+} article p {
+    text-align:justify;
+    text-justify:auto;
+}
+header, footer{
+    position: fixed;
+    right: 0px;
+    left: 0px;
+    border: none;
+    z-index: 1000;
+}
+header{
+    top: 0px;
+    background-image: url("../img/header.png");
+    min-height: 50px;
+    margin-bottom: 20px;
+} header .izquierda{
+    float: left;
+    background-color: rgba(0,0,0,.35);
+    margin-top: -1px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding-top: 0px;
+    height: 50px;
+    width: 30px;
+    border-left: none;
+    border-bottom: none;
+    border-top: none;
+    border-right: 2px solid;
+} header span{
+    float: left;
+    padding: 15px;
+    font-size: 18px;
+    line-height: 20px;
+} header .derecha{
+    float: right;
+    background-color: rgba(0,0,0,0);
+    margin-top: -1px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding-top: 0px;
+    height: 50px;
+    min-width: 50px;
+    border-right: none;
+    border-bottom: none;
+    border-top: none;
+    border-left: 2px solid;
+} header button{
+    border-image: url(../img/separator.png) 1 2 stretch;
+}
+footer {
+    min-height: 40px;
+    background-color: rgba(0, 0, 0, 0.85);
+    bottom: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    text-align:center;
+} footer button {
+    height: 40px;
+    width: 40px;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    background-color: transparent;
+    border: none;
+} footer button:active {
+    background-color:#00AACC;
+} footer .seleccionado {
+    color:#00AACC;
+}
+
+button, input, select, textarea{
+    margin: 0px;
+} button span{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    display: none;
+}
+.seleccionado{
+    transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+}
+.izquierda{
+    float: left;
+}
+.derecha{
+    float: right;
+}
+/*.centro por defecto en el footer*/
+.btn-menu {
+    position: relative;
+    float: right;
+/*    margin-left: 15px;*/
+}
+/*            }*/
+
+.cuenta{
+    width: 100%;
+    margin-bottom: 10px;
+    height: 2em;
+    padding: 0.3em;
+    background-color: #d9d9d9;
+    color: black;
+    font-size: 150%;
+} .cuenta .glyphicon {
+    color: #00AACC;
+    opacity: 1;
+} .cuenta h4{
+    color: white;
+}
+.transaccion{
+    width: 100%;
+    margin-bottom: 10px;
+    height: 2.5em;
+    padding: 0.4em;
+    background-color: #d9d9d9;
+    color: black;
+    font-size: 150%;
+} .transaccion .glyphicon {
+    color: #00AACC;
+    opacity: 1;
+} .transaccion .razon{
+    font-weight: bold;
+    font-size: 1.1em;
+} .transaccion .tcuenta{
+    font-size: 0.8em;
+    position: relative;
+    left: -45px;
+    top: -15px;
+} .transaccion .fecha{
+    font-size: 0.8em;
+    position: absolute;
+    left: 150px;
+    padding: 5px;
+}
+
+.input {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.saldoTotal{
+    display: inline;
+    width: 30%;
+    margin-top: 8px;
+    background-color: rgb(34, 34, 34);
+}
+.error {
+    color: red;
+}
+@media (min-width: 800px) {
+    aside{
+        -webkit-transform: translateX(0px);
+        transform: translateX(0px);
+        top: 0px;
+        height: 100%;
+    }
+    header .izquierda{
+        display: none;
+    }
+    header, footer, article{
+        margin-left: 200px;
+        width: -moz-calc(100% - 200px);
+        width: calc(100% - 200px);
+    } footer button {
+        width: auto;
+        margin-left: 10px;
+    }
+    button span{
+        display: inherit;
+    }
+}
+
+/* Landscape */
+@media screen and (orientation:landscape) {
+    #imagen{
+        width: 100%;
+        height: auto;
+    }
+}

@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+        <link type="text/css" rel="stylesheet" href="css/Ingesoft2.css">
+        <title>Wallet manager</title>
+    </head>
+<!--Muchas de las cosas que ahora están comentariadas les seguiré desarrollando para una version 2-->
+    <body>
+        <header>
+<!--            <button class="izquierda glyphicon glyphicon-align-justify" id="btn-opciones"><span>Menú</span></button>-->
+            <span id="header-titulo">Wallet manager</span>
+<!--            <button id="btn-ordenar" class="derecha glyphicon glyphicon-sort-by-order"><span>Ordenar</span></button>-->
+        </header>
+
+        <footer>
+            <!--<input id="saldo-total" disabled class="form-control btn-menu saldoTotal" value="">-->
+            <span></span>
+<!--            <button id="btn-alerta" class="glyphicon glyphicon-exclamation-sign"><span>Advertencia</span></button>-->
+            <button id="btn-cuentas" class="derecha glyphicon glyphicon-credit-card"><span>Cuentas</span></button>
+<!--            <button id="btn-reporte" class="derecha glyphicon glyphicon-tasks"><span>Reportes</span></button>-->
+            <button id="btn-transacciones" class="derecha glyphicon glyphicon-list"><span>Transacciones</span></button>
+            <button id="btn-transaccion" class="izquierda glyphicon glyphicon-plus-sign" data-toggle="collapse" data-target="#menu-transaccion"><span>Hacer una transacción</span></button>
+        </footer>
+
+<!--        <aside id="asd-opciones">
+            <h3 id="header-titulo">Opciones</h3>
+            <ul>
+                <li id="li-preferencias"><a href="#"><span class="glyphicon glyphicon-cog"></span> Preferencias</a></li>
+                <li id="li-ayuda"><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Ayuda</a></li>
+                <li id="li-sesionIniciar"><a href="#" data-toggle="collapse" data-target="#menu-login"><span class="glyphicon glyphicon-user"></span> Iniciar sessión</a></li>
+                <li id="li-sesionCerrar"><a href="#"><span class="glyphicon glyphicon-user"></span> Cerrar sessión</a></li>
+                <li id="li-sesionCrear"><a href="#" data-toggle="collapse" data-target="#menu-usuario"><span class="glyphicon glyphicon-user"></span> Crear sessión</a></li>
+            </ul>
+        </aside>-->
+
+        <article class="seleccionado"></article>
+
+        <!--Crear Transacción-->
+        <menu class="navbar navbar-inverse navbar-fixed-bottom navbar-collapse collapse" id="menu-transaccion">
+            <h4><span class="glyphicon glyphicon-plus-sign"></span> <span class="glyphicon glyphicon-transfer"></span> Crear transacción</h4>
+            <span class="input input-group">
+                <span class="input-group-addon" style="color: black">Origen</span>
+                <select class="form-control" id="slct-transaccion-Origen"></select>
+            </span>
+            <span class="input input-group">
+                <span class="input-group-addon" style="color: black">
+                    <input type="checkbox" id="cb-transaccion-Transferencia"> Transferencia
+                </span>
+                <select class="form-control hidden" id="slct-transaccion-Destino"></select>
+                <span id="spn-transaccion-Abono" class="input-group-addon" style="color: black">
+                    <input type="radio" id="rb-transaccion-Abono" name="Abono" value="true"><label for="rbAbono"> Abono </label>
+                    <input type="radio" id="rb-transaccion-Gasto" name="Abono" value="false"><label for="rbGasto"> Gasto </label>
+                </span>
+            </span>
+            <span class="input input-group">
+                <span class="input-group-addon" style="color: black">COP $</span>
+                <input id="tf-transaccion-valor" type="number" class="form-control" placeholder="00'000 000.00">
+                <!--                    <input type="number" class="form-control" placeholder=".00">-->
+            </span>
+            <!--                <input class="origen" type="number" id="tfValor" placeholder="$00'000 000">-->
+            <span class="input input-group">
+                
+            </span>
+            <span class="input input-group">
+                <span class="input-group-addon" style="color: black">Categoria</span>
+                <input class="form-control" type="text" id="tf-transaccion-categoria" placeholder="Almuerzo">
+            </span>
+            <span id="spn-transaccion-Error" class="input  input-group error"></span>
+            <span class="input">
+                <button class="btn btn-default" data-toggle="collapse" data-target="#menu-transaccion">Cancelar</button>
+                <button id="btn-transaccion-Aceptar" class="btn btn-default" style="float: right">Aceptar</button>
+            </span>
+        </menu>
+
+        <!--Crear Cuenta-->
+        <menu class="navbar navbar-inverse navbar-fixed-bottom navbar-collapse collapse" id="menu-cuenta">
+            <h4><span class="glyphicon glyphicon-plus-sign"></span> <span class="glyphicon glyphicon-credit-card"></span> Crear cuenta</h4>
+            <input class="input form-control" type="text" id="tf-cuenta-Nombre" placeholder="Nombre">            
+            <span class="input input-group">
+                <span class="input-group-addon" style="color: black">Tipo de cuenta</span>
+                <select class="form-control" id="slct-cuenta-Tipo">
+                    <option value="efectivo">Efectivo</option>
+                    <option value="banco">Cuenta bancaria</option>
+                    <option value="debito">Targeta debito</option>
+                    <option value="credito">Targeta credito</option>
+                    <option value="digital">Digital</option>
+                    <option value="activo">Activo</option>
+                    <option value="pasivo">Pasivo</option>
+                    <option value="transporte">Transporte publico</option>
+                </select>
+            </span>
+            <span class="input input-group">
+                <span class="input-group-addon" style="color: black">Divisa</span>
+                <select class="form-control" id="slct-cuenta-Divisa">
+                    <option value="$">$</option>
+                    <option value="€">€</option>
+                    <option value="Ł">Ł</option>
+                    <option value="Ŧ">Ŧ</option>
+                    <option value="¢">¢</option>
+                </select>
+            </span>
+            <span class="input input-group">
+                <span class="input-group-addon" style="color: black">Saldo inicial</span>
+                <input id="tf-cuenta-Saldo" type="number" class="form-control" placeholder="00'000 000.00">
+            </span>
+            <span class="input input-group">
+                <input type="checkbox" id="cb-cuenta-Total" value="true"><label for="cbCuentaTotal"> Sumar al saldo totál</label>
+            </span>
+            <span id="spn-cuenta-Error" class="input  input-group error"></span>
+            <span class="input">
+                <button class="btn btn-default" data-toggle="collapse" data-target="#menu-cuenta">Cancelar</button>
+                <button id="btn-cuenta-Aceptar" class="btn btn-default" style="float: right">Aceptar</button>
+            </span>
+        </menu>
+
+        <!--Crear session-->
+        <menu class="navbar navbar-inverse navbar-fixed-bottom navbar-collapse collapse" id="menu-usuario">
+            <h4><span class="glyphicon glyphicon-plus-sign"></span> <span class="glyphicon glyphicon-user"></span> Crear usuario en la nube</h4>
+            <input class="input form-control" type="text" id="tfCuentaNombre" placeholder="Usuario">
+            <span class="glyphicon glyphicon-remove"></span><span> El usuario debe tener minimo cuatro letras sin espacios</span>
+            <input class="input form-control" type="email" id="tfCuentaNombre" placeholder="Correo@Electronico.com">
+            <input class="input form-control" type="password" id="tfCuentaNombre" placeholder="Contraseña">
+            <input class="input form-control" type="password" id="tfCuentaNombre" placeholder="Confirme su contraseña">
+            <span class="glyphicon glyphicon-remove"></span><span> La contraseña debe tener minimo seis letras y un número</span>
+            <span class="input input-group">
+                <input type="checkbox" id="cbUsuarioAcepta" name="saldoTotal" value="true"><label for="cbUsuarioAcepta"> Leí y acepto los terminos</label>
+            </span>
+            <span class="input">
+                <button class="btn btn-default" data-toggle="collapse" data-target="#menu-usuario">Cancelar</button>
+                <button class="btn btn-default" style="float: right">Aceptar</button>
+            </span>
+        </menu>
+
+        <!--Iniciar sessión-->
+        <menu id="menu-login" class="navbar navbar-inverse navbar-fixed-bottom navbar-collapse collapse">
+            <h4><span class="glyphicon glyphicon-user"></span> Iniciar sesión</h4>
+            <input class="input form-control" type="text" id="tfCuentaNombre" placeholder="Usuario">
+            <input class="input form-control" type="password" id="tfCuentaNombre" placeholder="Contraseña">
+            <span class="input">
+                <button class="btn btn-default" data-toggle="collapse" data-target="#menu-login">Cancelar</button>
+                <button class="btn btn-default" style="float: right">Aceptar</button>
+            </span>
+        </menu>
+
+        <!--Alerta-->
+        <menu id="menu-alerta" class="navbar navbar-inverse navbar-fixed-bottom navbar-collapse collapse hidden"></menu>
+
+        <script type="text/javascript" language="javascript" src="js/recursos/jquery/jquery.js"></script>
+        <script type="text/javascript" language="javascript" src="js/recursos/bootstrap/bootstrap.js"></script>
+            <script type="text/javascript" src="js/utiles.js"></script>
+            <script type="text/javascript" src="js/Persistencia.js"></script>
+            <script type="text/javascript" src="js/Modelo/Modelo.js"></script>
+            <script type="text/javascript" src="js/Modelo/Cuenta.js"></script>
+            <script type="text/javascript" src="js/Modelo/Transaccion.js"></script>
+
+            <script type="text/javascript" src="js/Servicio/Servicio.js"></script>
+            <script type="text/javascript" src="js/Servicio/SCuenta.js"></script>
+            <script type="text/javascript" src="js/Servicio/STransaccion.js"></script>
+            <script type="text/javascript" src="js/Control.js"></script>
+
+            <script type="text/javascript" src="js/Vista/Vista.js"></script>
+            <script type="text/javascript" src="js/Vista/VInicio.js"></script>
+            <script type="text/javascript" src="js/Vista/VCuenta.js"></script>
+            <script type="text/javascript" src="js/Vista/VTransaccion.js"></script>
+
+            <script type="text/javascript" src="js/Evento.js"></script>
+<!--23 / 01 / 2014 14:453-->
+
+        <script type="text/template" id="cuenta">
+<div class="cuenta container" id="cuenta-{0}">
+    <div>
+        <a id="btn-agregar-{0}"><span class="glyphicon glyphicon-plus-sign"></span></a>
+        <span> {0}</span>
+        <span class="btn-menu glyphicon glyphicon-align-justify" id="btn-menu-{0}" data-toggle="collapse" data-target="#menu-cuenta-{0}"></span>
+        <span class="btn-menu" id="saldo-{0}">{1} </span>
+    </div>
+    <menu class="navbar navbar-inverse navbar-collapse collapse" id="menu-cuenta-{0}">
+        <a id="a-cuenta-{0}-borrar"><span class="glyphicon glyphicon-trash"></span> Borrar</a>
+    </menu>
+</div>
+        </script>
+        <script type="text/template" id="transaccion">
+            <div class="transaccion container" id="transaccion-{4}">
+                <div>
+                    <span class="razon"> {0}</span>
+                    <span class="tcuenta">{1}</span>
+                    <span class="fecha">{2}</span>
+                    <span class="btn-menu glyphicon glyphicon-align-justify" id="btn-transaccion-menu-{4}" data-toggle="collapse" data-target="#menu-transaccion-{4}"></span>
+                    <span class="btn-menu" id="saldo-{4}">{3}</span>
+                </div>
+                <menu class="navbar navbar-inverse navbar-collapse collapse" id="menu-transaccion-{4}">
+                    <a id="a-transaccion-{4}-borrar"><span class="glyphicon glyphicon-trash"></span> Borrar</a>
+                </menu>
+            </div>
+        </script>
+        <script type="text/template" id="btn-crearCuenta">
+<button data-toggle="collapse" data-target="#menu-cuenta" class="btn btn-primary btn-lg btn-block">
+<span class="glyphicon glyphicon-credit-card"></span> Crear cuenta
+</button>
+        </script>
+        <script type="text/template" id="inicio">
+<h1>Bienvenido</h1>
+<p>
+Para empezar crea una cuenta, esta te permitirá tener control sobre los movimientos financieros que hagas.<br>
+Recuerda que puedes sincronisar tus cuentas en internet para que nunca pierdas rastro de tus finanzas. 
+</p>
+<button data-toggle="collapse" data-target="#menu-cuenta" class="btn btn-primary btn-lg btn-block">
+<span class="glyphicon glyphicon-credit-card"></span> Crear cuenta
+</button>
+<!--<button data-toggle="collapse" data-target="#menu-usuario" class="btn btn-primary btn-lg btn-block">
+<span class="glyphicon glyphicon-user"></span> Crear usuario en la nube
+</button>
+<button data-toggle="collapse" data-target="#menu-login" class="btn btn-primary btn-lg btn-block">
+<span class="glyphicon glyphicon-user"></span> Iniciar sesión en la nube
+</button>-->
+        </script>
+    </body>
+</html>

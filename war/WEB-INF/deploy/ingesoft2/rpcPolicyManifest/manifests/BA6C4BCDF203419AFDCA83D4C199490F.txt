@@ -1,0 +1,2 @@
+serviceClass: co.edu.unal.drzorrof.client.GreetingService
+path: 354CA479FEC952F3CF6899714D4884C6.gwt.rpc

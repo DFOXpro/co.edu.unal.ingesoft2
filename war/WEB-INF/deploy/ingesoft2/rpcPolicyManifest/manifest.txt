@@ -1,0 +1,3 @@
+# Module ingesoft2
+# RPC service class, partial path of RPC policy file
+co.edu.unal.drzorrof.client.GreetingService, 354CA479FEC952F3CF6899714D4884C6.gwt.rpc
